@@ -39,12 +39,12 @@ per stress test o analisi comparative.
 
 ### Ambito coperto
 
-| Ambito            | Descrizione                                                                           |
-| ----------------- | ------------------------------------------------------------------------------------- |
-| Test algoritmici  | Verifica della correttezza di `QTMiner`, del rispetto del `radius` e del determinismo |
-| Test sui dati     | Controllo di caricamento, attributi continui, distanze e comportamenti di supporto    |
-| Benchmark         | Misurazione di tempi, numero di cluster, uso della cache e memoria                    |
-| Dataset sintetici | Produzione di file CSV di dimensione controllata per esperimenti ripetibili           |
+| Ambito | Descrizione |
+| --- | --- |
+| Test algoritmici | Verifica della correttezza di `QTMiner`, del rispetto del `radius` e del determinismo |
+| Test sui dati | Controllo di caricamento, attributi continui, distanze e comportamenti di supporto |
+| Benchmark | Misurazione di tempi, numero di cluster, uso della cache e memoria |
+| Dataset sintetici | Produzione di file CSV di dimensione controllata per esperimenti ripetibili |
 
 ### Carattere del modulo
 
@@ -114,14 +114,14 @@ compatibile con i Makefile del repository.
 
 Le classi presenti coprono diversi aspetti del backend:
 
-| Classe                     | Focus principale                                  |
-| -------------------------- | ------------------------------------------------- |
-| `TestQTAlgorithm`          | correttezza generale dell'algoritmo QT            |
-| `TestClusterOperations`    | operazioni elementari su `Cluster` e `ClusterSet` |
-| `TestDataOperations`       | caricamento e rappresentazione dei dataset        |
-| `TestDistanceCalculations` | verifiche sulle misure di distanza                |
-| `TestContinuousAttributes` | gestione degli attributi continui                 |
-| `TestIteratorsComparators` | iteratori, confronto e supporto strutturale       |
+| Classe | Focus principale |
+| --- | --- |
+| `TestQTAlgorithm` | correttezza generale dell'algoritmo QT |
+| `TestClusterOperations` | operazioni elementari su `Cluster` e `ClusterSet` |
+| `TestDataOperations` | caricamento e rappresentazione dei dataset |
+| `TestDistanceCalculations` | verifiche sulle misure di distanza |
+| `TestContinuousAttributes` | gestione degli attributi continui |
+| `TestIteratorsComparators` | iteratori, confronto e supporto strutturale |
 
 In particolare, `TestQTAlgorithm` controlla:
 
@@ -135,11 +135,11 @@ In particolare, `TestQTAlgorithm` controlla:
 
 Il package `utility` raccoglie strumenti di natura sperimentale.
 
-| Classe             | Ruolo                                                              |
-| ------------------ | ------------------------------------------------------------------ |
-| `QTBenchmark`      | esecuzione di benchmark singoli o comparativi                      |
-| `RunBenchmark`     | orchestrazione di una campagna di benchmark su dataset predefiniti |
-| `DatasetGenerator` | generazione di file CSV sintetici per prove di scalabilita'        |
+| Classe | Ruolo |
+| --- | --- |
+| `QTBenchmark` | esecuzione di benchmark singoli o comparativi |
+| `RunBenchmark` | orchestrazione di una campagna di benchmark su dataset predefiniti |
+| `DatasetGenerator` | generazione di file CSV sintetici per prove di scalabilita' |
 
 #### `QTBenchmark`
 
@@ -198,9 +198,9 @@ qtExt ──depends on──> qtServer
 
 ### Dipendenze esterne
 
-| Dipendenza                | Ruolo                                            | Obbligatoria           |
-| ------------------------- | ------------------------------------------------ | ---------------------- |
-| JDK                       | Compilazione ed esecuzione                       | Si                     |
+| Dipendenza | Ruolo | Obbligatoria |
+| --- | --- | --- |
+| JDK | Compilazione ed esecuzione | Si |
 | Driver JDBC di `qtServer` | Necessario quando i test coinvolgono il database | Dipende dallo scenario |
 
 Il modulo non introduce librerie esterne aggiuntive: riusa quelle gia' richieste dal
@@ -282,13 +282,13 @@ si vogliono confrontare due varianti dello stesso algoritmo o due dimensioni di 
 
 ### Indicatori piu' rilevanti
 
-| Indicatore                  | Significato                                   |
-| --------------------------- | --------------------------------------------- |
-| `executionTimeMs`           | tempo complessivo della fase di clustering    |
-| `numClusters`               | cardinalita' finale della partizione prodotta |
-| `distanceCalculations`      | numero di distanze effettivamente calcolate   |
-| `cacheHits` / `cacheMisses` | efficacia della cache delle distanze          |
-| `memoryUsedMB`              | stima della memoria utilizzata nel benchmark  |
+| Indicatore | Significato |
+| --- | --- |
+| `executionTimeMs` | tempo complessivo della fase di clustering |
+| `numClusters` | cardinalita' finale della partizione prodotta |
+| `distanceCalculations` | numero di distanze effettivamente calcolate |
+| `cacheHits` / `cacheMisses` | efficacia della cache delle distanze |
+| `memoryUsedMB` | stima della memoria utilizzata nel benchmark |
 
 ### Criteri di lettura
 

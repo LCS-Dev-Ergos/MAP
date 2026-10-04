@@ -42,15 +42,15 @@ progetto senza dipendere dal server di rete.
 
 Le capacita' principali del modulo possono essere riassunte come segue:
 
-| Ambito                  | Descrizione                                                            |
-| ----------------------- | ---------------------------------------------------------------------- |
-| Acquisizione dati       | Caricamento da `PlayTennis`, dataset `Iris`, file CSV e database MySQL |
-| Esecuzione locale       | Invocazione diretta di `QTMiner` tramite servizi applicativi           |
-| Consultazione risultati | Vista ad albero, pannelli di dettaglio, dialoghi statistici            |
-| Visualizzazione grafica | Scatter plot 2D, modalita' convex hull, esportazione PNG               |
-| Persistenza             | Salvataggio e ricaricamento di clustering in formato `.dmp`            |
-| Esportazione            | Generazione di file CSV, report TXT e pacchetto ZIP                    |
-| Personalizzazione       | Gestione di tema, font, parametri database e cartella di export        |
+| Ambito | Descrizione |
+| --- | --- |
+| Acquisizione dati | Caricamento da `PlayTennis`, dataset `Iris`, file CSV e database MySQL |
+| Esecuzione locale | Invocazione diretta di `QTMiner` tramite servizi applicativi |
+| Consultazione risultati | Vista ad albero, pannelli di dettaglio, dialoghi statistici |
+| Visualizzazione grafica | Scatter plot 2D, modalita' convex hull, esportazione PNG |
+| Persistenza | Salvataggio e ricaricamento di clustering in formato `.dmp` |
+| Esportazione | Generazione di file CSV, report TXT e pacchetto ZIP |
+| Personalizzazione | Gestione di tema, font, parametri database e cartella di export |
 
 ### Principio progettuale
 
@@ -118,17 +118,17 @@ qtGUI/src/main/
 
 ### Significato delle aree principali
 
-| Area                  | Contenuto                                                          |
-| --------------------- | ------------------------------------------------------------------ |
-| `controllers/`        | Coordinamento delle viste FXML e degli eventi utente               |
-| `services/`           | Logica di importazione dati, clustering, persistenza ed export     |
-| `models/`             | Rappresentazioni di configurazioni e risultati                     |
-| `charts/`             | Visualizzazione 2D e calcolo dell'inviluppo convesso               |
-| `dialogs/`            | Finestre modali di supporto                                        |
-| `utils/`              | Componenti trasversali, tema, contesto applicativo, dataset loader |
-| `resources/views/`    | Layout FXML delle schermate                                        |
-| `resources/styles/`   | Fogli di stile CSS dell'applicazione                               |
-| `resources/datasets/` | Dataset inclusi nelle risorse, in particolare `iris.csv`           |
+| Area | Contenuto |
+| --- | --- |
+| `controllers/` | Coordinamento delle viste FXML e degli eventi utente |
+| `services/` | Logica di importazione dati, clustering, persistenza ed export |
+| `models/` | Rappresentazioni di configurazioni e risultati |
+| `charts/` | Visualizzazione 2D e calcolo dell'inviluppo convesso |
+| `dialogs/` | Finestre modali di supporto |
+| `utils/` | Componenti trasversali, tema, contesto applicativo, dataset loader |
+| `resources/views/` | Layout FXML delle schermate |
+| `resources/styles/` | Fogli di stile CSS dell'applicazione |
+| `resources/datasets/` | Dataset inclusi nelle risorse, in particolare `iris.csv` |
 
 ### Entry point
 
@@ -149,13 +149,13 @@ registrazione degli acceleratori globali.
 
 I controller governano la navigazione e il comportamento delle schermate:
 
-| Controller             | Responsabilita' principale                                              |
-| ---------------------- | ----------------------------------------------------------------------- |
-| `MainController`       | Coordinamento della finestra principale e delle viste interne           |
-| `HomeController`       | Selezione della sorgente dati e validazione dei parametri iniziali      |
-| `ClusteringController` | Esecuzione del clustering e monitoraggio del progresso                  |
-| `ResultsController`    | Presentazione del risultato, export e accesso alle viste di dettaglio   |
-| `SettingsController`   | Gestione delle preferenze applicative e dei parametri di configurazione |
+| Controller | Responsabilita' principale |
+| --- | --- |
+| `MainController` | Coordinamento della finestra principale e delle viste interne |
+| `HomeController` | Selezione della sorgente dati e validazione dei parametri iniziali |
+| `ClusteringController` | Esecuzione del clustering e monitoraggio del progresso |
+| `ResultsController` | Presentazione del risultato, export e accesso alle viste di dettaglio |
+| `SettingsController` | Gestione delle preferenze applicative e dei parametri di configurazione |
 
 Dal punto di vista del flusso utente, `HomeController` e `ResultsController` sono i due
 punti piu' rilevanti: il primo costruisce la configurazione di input, il secondo rende
@@ -165,11 +165,11 @@ consultabile e persistente l'output del backend.
 
 I servizi costituiscono il nucleo applicativo della GUI:
 
-| Service             | Funzione                                                     |
-| ------------------- | ------------------------------------------------------------ |
+| Service | Funzione |
+| --- | --- |
 | `ClusteringService` | Esecuzione di `QTMiner`, salvataggio e caricamento di `.dmp` |
-| `DataImportService` | Importazione da dataset hardcoded, `Iris`, CSV e database    |
-| `ExportService`     | Esportazione in CSV, TXT e ZIP                               |
+| `DataImportService` | Importazione da dataset hardcoded, `Iris`, CSV e database |
+| `ExportService` | Esportazione in CSV, TXT e ZIP |
 
 Questa separazione evita di disperdere la logica del dominio nei controller e rende piu'
 trasparente il rapporto tra interfaccia e backend.
@@ -178,10 +178,10 @@ trasparente il rapporto tra interfaccia e backend.
 
 I modelli principali sono:
 
-| Modello                   | Ruolo                                                               |
-| ------------------------- | ------------------------------------------------------------------- |
-| `ClusteringConfiguration` | Rappresentazione strutturata dei parametri di input                 |
-| `ClusteringResult`        | Contenitore di `ClusterSet`, `Data`, timestamp, `radius` e metadati |
+| Modello | Ruolo |
+| --- | --- |
+| `ClusteringConfiguration` | Rappresentazione strutturata dei parametri di input |
+| `ClusteringResult` | Contenitore di `ClusterSet`, `Data`, timestamp, `radius` e metadati |
 
 `ClusteringResult` e' particolarmente importante perche' funge da punto di raccordo tra
 clustering, visualizzazione, statistiche ed esportazione.
@@ -190,12 +190,12 @@ clustering, visualizzazione, statistiche ed esportazione.
 
 Tra le classi di supporto meritano particolare attenzione:
 
-| Utility              | Funzione                                                           |
-| -------------------- | ------------------------------------------------------------------ |
-| `ApplicationContext` | Stato applicativo condiviso e accesso ai servizi comuni            |
-| `DatasetLoader`      | Caricamento del dataset `Iris` dalle risorse                       |
-| `Point2D`            | Rappresentazione elementare dei punti usati nei grafici            |
-| `ColorPalette`       | Definizione di colori coerenti per la rappresentazione dei cluster |
+| Utility | Funzione |
+| --- | --- |
+| `ApplicationContext` | Stato applicativo condiviso e accesso ai servizi comuni |
+| `DatasetLoader` | Caricamento del dataset `Iris` dalle risorse |
+| `Point2D` | Rappresentazione elementare dei punti usati nei grafici |
+| `ColorPalette` | Definizione di colori coerenti per la rappresentazione dei cluster |
 
 La gestione del tema e della dimensione dei font e' delegata a
 `com.map.stdgui.StdTheme`, configurato una volta in `MainApp` e agganciato alla
@@ -205,12 +205,12 @@ finestra principale via `attach(StdWindow)`.
 
 Il modulo include inoltre componenti mirati alla consultazione dei dati:
 
-| Componente             | Ruolo                                                   |
-| ---------------------- | ------------------------------------------------------- |
-| `DatasetPreviewDialog` | Anteprima strutturata del dataset selezionato           |
-| `StatisticsDialog`     | Riepilogo statistico del clustering                     |
-| `AboutDialog`          | Informazioni descrittive sull'applicazione              |
-| `ChartViewer`          | Finestra di visualizzazione ed esportazione del grafico |
+| Componente | Ruolo |
+| --- | --- |
+| `DatasetPreviewDialog` | Anteprima strutturata del dataset selezionato |
+| `StatisticsDialog` | Riepilogo statistico del clustering |
+| `AboutDialog` | Informazioni descrittive sull'applicazione |
+| `ChartViewer` | Finestra di visualizzazione ed esportazione del grafico |
 
 ---
 
@@ -266,9 +266,9 @@ renda difficile percepire la forma globale dei cluster.
 
 Il modulo supporta due famiglie di output:
 
-| Tipo                     | Formato                    |
-| ------------------------ | -------------------------- |
-| Persistenza interna      | `.dmp`                     |
+| Tipo | Formato |
+| --- | --- |
+| Persistenza interna | `.dmp` |
 | Esportazione documentale | `CSV`, `TXT`, `ZIP`, `PNG` |
 
 `ExportService` gestisce i tre formati testuali/archivistici:
@@ -311,13 +311,13 @@ qtGUI ── depends on ──> qtServer
 
 Le dipendenze principali dichiarate nel `pom.xml` sono:
 
-| Libreria                             | Ruolo                                                 |
-| ------------------------------------ | ----------------------------------------------------- |
-| JavaFX (`controls`, `fxml`, `swing`) | Infrastruttura grafica                                |
-| XChart                               | Generazione dei grafici                               |
-| ControlsFX                           | Componenti UI aggiuntivi                              |
-| SLF4J + Logback                      | Logging                                               |
-| MySQL Connector/J                    | Accesso JDBC, opzionale a seconda della sorgente dati |
+| Libreria | Ruolo |
+| --- | --- |
+| JavaFX (`controls`, `fxml`, `swing`) | Infrastruttura grafica |
+| XChart | Generazione dei grafici |
+| ControlsFX | Componenti UI aggiuntivi |
+| SLF4J + Logback | Logging |
+| MySQL Connector/J | Accesso JDBC, opzionale a seconda della sorgente dati |
 
 Il modulo richiede inoltre una toolchain coerente con `JDK 21`, esplicitamente dichiarata nella configurazione Maven.
 
@@ -363,11 +363,11 @@ con gli altri moduli del progetto.
 
 ### Artefatti principali
 
-| Artefatto           | Posizione                      |
-| ------------------- | ------------------------------ |
-| Classi compilate    | `qtGUI/target/classes`         |
-| JAR del modulo      | `qtGUI/target/qtGUI-1.0.0.jar` |
-| Risorse applicative | `qtGUI/src/main/resources`     |
+| Artefatto | Posizione |
+| --- | --- |
+| Classi compilate | `qtGUI/target/classes` |
+| JAR del modulo | `qtGUI/target/qtGUI-1.0.0.jar` |
+| Risorse applicative | `qtGUI/src/main/resources` |
 
 ---
 

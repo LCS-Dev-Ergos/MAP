@@ -70,21 +70,21 @@ decision. The caller should do it deliberately with `StdGui.init()` unless the a
 
 ### What StdGUI Hides
 
-| Library concept         | JavaFX internals hidden                                   |
-| ----------------------- | --------------------------------------------------------- |
-| `StdGui`                | `Platform.startup`, `Platform.runLater`, latches, futures |
-| `StdView`               | `Parent`, `FXMLLoader`, generated view roots              |
-| `StdWindow`             | `Stage`, `Scene`, modality, scene-root replacement        |
-| `StdDialog`             | `Alert`, `ChoiceDialog`, blocking dialog result handling  |
-| `StdFileDialog`         | `FileChooser`, `DirectoryChooser`, owner lookup           |
-| `StdAsync` and `StdJob` | `Task`, worker threads, lifecycle handlers                |
-| `StdTheme`              | Scene stylesheets, persisted properties, font-size CSS    |
-| `StdChart`              | JavaFX chart nodes, axes, series, PNG snapshots           |
-| `StdDataView`           | `TableView`, `TreeView`, `TabPane`, text areas            |
-| `StdToolWindow`         | Tool layout panes, combo boxes, buttons, check boxes      |
-| `StdStatus`             | Node visibility, style classes, auto-hide timers          |
-| `StdShortcut`           | `KeyCombination` and scene accelerators                   |
-| `StdSwingView`          | `SwingNode` and Swing EDT coordination                    |
+| Library concept | JavaFX internals hidden |
+| --- | --- |
+| `StdGui` | `Platform.startup`, `Platform.runLater`, latches, futures |
+| `StdView` | `Parent`, `FXMLLoader`, generated view roots |
+| `StdWindow` | `Stage`, `Scene`, modality, scene-root replacement |
+| `StdDialog` | `Alert`, `ChoiceDialog`, blocking dialog result handling |
+| `StdFileDialog` | `FileChooser`, `DirectoryChooser`, owner lookup |
+| `StdAsync` and `StdJob` | `Task`, worker threads, lifecycle handlers |
+| `StdTheme` | Scene stylesheets, persisted properties, font-size CSS |
+| `StdChart` | JavaFX chart nodes, axes, series, PNG snapshots |
+| `StdDataView` | `TableView`, `TreeView`, `TabPane`, text areas |
+| `StdToolWindow` | Tool layout panes, combo boxes, buttons, check boxes |
+| `StdStatus` | Node visibility, style classes, auto-hide timers |
+| `StdShortcut` | `KeyCombination` and scene accelerators |
+| `StdSwingView` | `SwingNode` and Swing EDT coordination |
 
 ## Installation
 
@@ -712,13 +712,13 @@ Use this for migration or specialized Swing widgets. Do not use it as the defaul
 Most StdGUI methods are safe to call from non-JavaFX threads. Internally they
 use `StdGui.runAndWait(...)`, `StdGui.callAndWait(...)`, or `StdGui.later(...)`.
 
-| Operation style           | Method examples                               | Threading behavior                                      |
-| ------------------------- | --------------------------------------------- | ------------------------------------------------------- |
-| Fire-and-forget UI update | `StdGui.later`, `StdStatus.show`              | Schedules work and returns                              |
-| Blocking UI update        | `StdWindow.show`, `StdDialog.info`            | Runs on FX thread and waits                             |
-| Blocking UI query         | `StdWindow.isShowing`, `StdClipboard.getText` | Computes on FX thread and returns a value               |
-| Background work           | `StdAsync.submit`                             | Runs work on a daemon thread and callbacks on FX thread |
-| Swing embedding           | `StdSwingView.setContent`                     | Creates Swing content on the Swing EDT                  |
+| Operation style | Method examples | Threading behavior |
+| --- | --- | --- |
+| Fire-and-forget UI update | `StdGui.later`, `StdStatus.show` | Schedules work and returns |
+| Blocking UI update | `StdWindow.show`, `StdDialog.info` | Runs on FX thread and waits |
+| Blocking UI query | `StdWindow.isShowing`, `StdClipboard.getText` | Computes on FX thread and returns a value |
+| Background work | `StdAsync.submit` | Runs work on a daemon thread and callbacks on FX thread |
+| Swing embedding | `StdSwingView.setContent` | Creates Swing content on the Swing EDT |
 
 ### Practical Guidelines
 
@@ -743,18 +743,18 @@ that exercise the public methods.
 
 Useful clients include:
 
-| Client                | Demonstrates                                           |
-| --------------------- | ------------------------------------------------------ |
-| `StdGuiClient`        | explicit runtime startup and UI dispatch               |
-| `StdViewClient`       | FXML loading and controller access from test resources |
-| `StdWindowClient`     | content, size, fixed window, blocking show             |
-| `StdThemeClient`      | theme persistence, attach, font sizes                  |
-| `StdAsyncClient`      | progress, success, failure callback pattern            |
-| `StdChartClient`      | bar charts, scatter plots, PNG export                  |
-| `StdDataViewClient`   | tables, trees, tabs                                    |
-| `StdToolWindowClient` | choices, toggles, actions, replacement content         |
-| `StdDialogClient`     | info, warning, error, confirm, choose                  |
-| `StdSwingViewClient`  | Swing embedding                                        |
+| Client | Demonstrates |
+| --- | --- |
+| `StdGuiClient` | explicit runtime startup and UI dispatch |
+| `StdViewClient` | FXML loading and controller access from test resources |
+| `StdWindowClient` | content, size, fixed window, blocking show |
+| `StdThemeClient` | theme persistence, attach, font sizes |
+| `StdAsyncClient` | progress, success, failure callback pattern |
+| `StdChartClient` | bar charts, scatter plots, PNG export |
+| `StdDataViewClient` | tables, trees, tabs |
+| `StdToolWindowClient` | choices, toggles, actions, replacement content |
+| `StdDialogClient` | info, warning, error, confirm, choose |
+| `StdSwingViewClient` | Swing embedding |
 
 Compile the clients:
 
@@ -852,12 +852,12 @@ messages, charts, and windows.
 
 This gives a clean boundary:
 
-| Layer               | Allowed knowledge                            |
-| ------------------- | -------------------------------------------- |
-| Domain model        | No JavaFX, no StdGUI                         |
+| Layer | Allowed knowledge |
+| --- | --- |
+| Domain model | No JavaFX, no StdGUI |
 | Application service | No JavaFX, optional StdGUI for notifications |
-| FXML controller     | JavaFX handles allowed as adapter details    |
-| StdGUI library      | JavaFX internals hidden and tested           |
+| FXML controller | JavaFX handles allowed as adapter details |
+| StdGUI library | JavaFX internals hidden and tested |
 
 ### Extension Heuristics
 

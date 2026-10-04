@@ -42,13 +42,13 @@ salvare un file `.dmp`.
 
 ### Funzioni principali
 
-| Funzione                  | Descrizione                                                                        |
-| ------------------------- | ---------------------------------------------------------------------------------- |
-| Connessione remota        | Apertura di una connessione TCP verso `qtServer` specificando IP e porta           |
-| Interazione guidata       | Presentazione di un menu numerico con operazioni coerenti con il protocollo server |
-| Validazione input         | Lettura robusta dei parametri utente tramite `keyboardinput.Keyboard`              |
-| Gestione errori           | Ricezione di messaggi d'errore dal server e loro presentazione all'utente          |
-| Visualizzazione risultati | Stampa testuale del clustering restituito dal backend                              |
+| Funzione | Descrizione |
+| --- | --- |
+| Connessione remota | Apertura di una connessione TCP verso `qtServer` specificando IP e porta |
+| Interazione guidata | Presentazione di un menu numerico con operazioni coerenti con il protocollo server |
+| Validazione input | Lettura robusta dei parametri utente tramite `keyboardinput.Keyboard` |
+| Gestione errori | Ricezione di messaggi d'errore dal server e loro presentazione all'utente |
+| Visualizzazione risultati | Stampa testuale del clustering restituito dal backend |
 
 ### Limiti intenzionali
 
@@ -104,11 +104,11 @@ protocollo di `qtServer`.
 
 ### Organizzazione logica
 
-| Elemento                 | Ruolo                                                                   |
-| ------------------------ | ----------------------------------------------------------------------- |
-| `MainTest`               | Entry point del modulo, gestione della connessione e del menu operativo |
-| `ServerException`        | Eccezione applicativa per errori restituiti dal server                  |
-| `keyboardinput.Keyboard` | Utility di lettura robusta da tastiera                                  |
+| Elemento | Ruolo |
+| --- | --- |
+| `MainTest` | Entry point del modulo, gestione della connessione e del menu operativo |
+| `ServerException` | Eccezione applicativa per errori restituiti dal server |
+| `keyboardinput.Keyboard` | Utility di lettura robusta da tastiera |
 
 ---
 
@@ -129,14 +129,14 @@ validi.
 
 I metodi operativi principali sono i seguenti:
 
-| Metodo                           | Significato                                                               |
-| -------------------------------- | ------------------------------------------------------------------------- |
-| `menu()`                         | Presenta il menu principale e restituisce una scelta valida tra `0` e `4` |
-| `storeTableFromDb()`             | Richiede al server il caricamento di una tabella MySQL                    |
-| `learningFromDbTable()`          | Avvia il clustering sul dataset gia' caricato lato server                 |
-| `storeClusterInFile()`           | Chiede il salvataggio del clustering corrente in formato `.dmp`           |
-| `learningFromFile()`             | Richiede il caricamento di un clustering serializzato                     |
-| `writeString()` / `readString()` | Implementano il trasporto di stringhe UTF-8 prefissate da lunghezza       |
+| Metodo | Significato |
+| --- | --- |
+| `menu()` | Presenta il menu principale e restituisce una scelta valida tra `0` e `4` |
+| `storeTableFromDb()` | Richiede al server il caricamento di una tabella MySQL |
+| `learningFromDbTable()` | Avvia il clustering sul dataset gia' caricato lato server |
+| `storeClusterInFile()` | Chiede il salvataggio del clustering corrente in formato `.dmp` |
+| `learningFromFile()` | Richiede il caricamento di un clustering serializzato |
+| `writeString()` / `readString()` | Implementano il trasporto di stringhe UTF-8 prefissate da lunghezza |
 
 Il ciclo principale del `main()` non esegue computazione locale: si limita a
 interpretare la scelta dell'utente, inviare il comando corrispondente e stampare
@@ -174,13 +174,13 @@ facile da ricostruire dal codice.
 
 ### Comandi supportati
 
-| Codice | Operazione                                  | Parametri inviati                   | Risposta attesa                                 |
-| ------ | ------------------------------------------- | ----------------------------------- | ----------------------------------------------- |
-| `0`    | Caricamento tabella da database             | nome tabella                        | `OK` oppure messaggio d'errore                  |
-| `1`    | Esecuzione clustering sul dataset corrente  | `radius`                            | `OK`, numero cluster, rappresentazione testuale |
-| `2`    | Salvataggio del clustering corrente         | nessuno                             | `OK` oppure messaggio d'errore                  |
-| `3`    | Caricamento di un clustering da file `.dmp` | nome file                           | `OK` oppure messaggio d'errore                  |
-| `4`    | Uscita dal client                           | nessun messaggio al server dedicato | chiusura locale della sessione                  |
+| Codice | Operazione | Parametri inviati | Risposta attesa |
+| --- | --- | --- | --- |
+| `0` | Caricamento tabella da database | nome tabella | `OK` oppure messaggio d'errore |
+| `1` | Esecuzione clustering sul dataset corrente | `radius` | `OK`, numero cluster, rappresentazione testuale |
+| `2` | Salvataggio del clustering corrente | nessuno | `OK` oppure messaggio d'errore |
+| `3` | Caricamento di un clustering da file `.dmp` | nome file | `OK` oppure messaggio d'errore |
+| `4` | Uscita dal client | nessun messaggio al server dedicato | chiusura locale della sessione |
 
 ### Osservazioni sullo stato di sessione
 
@@ -223,10 +223,10 @@ operativamente dal server per poter essere utilizzato in modo significativo.
 
 ### Dipendenze esterne
 
-| Dipendenza               | Ruolo                                 | Obbligatoria            |
-| ------------------------ | ------------------------------------- | ----------------------- |
-| JDK                      | Compilazione ed esecuzione del client | Si                      |
-| `qtServer` in esecuzione | Backend remoto raggiungibile via TCP  | Si, per l'uso operativo |
+| Dipendenza | Ruolo | Obbligatoria |
+| --- | --- | --- |
+| JDK | Compilazione ed esecuzione del client | Si |
+| `qtServer` in esecuzione | Backend remoto raggiungibile via TCP | Si, per l'uso operativo |
 
 Il client non usa librerie di terze parti: tutta la comunicazione si basa sulle API
 standard di Java (`java.net`, `java.io`, `java.nio.charset`).
@@ -299,13 +299,13 @@ prodotti senza ripetere il caricamento della tabella e l'esecuzione dell'algorit
 
 ### Gestione degli errori piu' comuni
 
-| Situazione                   | Effetto lato client                                           |
-| ---------------------------- | ------------------------------------------------------------- |
-| IP o porta errati            | Errore in fase di connessione                                 |
-| Tabella inesistente          | Messaggio d'errore ritrasmesso dal server                     |
-| `radius` non valido          | Richiesta ripetuta oppure errore server, a seconda della fase |
-| File `.dmp` assente          | Messaggio di file non trovato                                 |
-| Chiusura inattesa del server | Errore I/O o EOF durante la comunicazione                     |
+| Situazione | Effetto lato client |
+| --- | --- |
+| IP o porta errati | Errore in fase di connessione |
+| Tabella inesistente | Messaggio d'errore ritrasmesso dal server |
+| `radius` non valido | Richiesta ripetuta oppure errore server, a seconda della fase |
+| File `.dmp` assente | Messaggio di file non trovato |
+| Chiusura inattesa del server | Errore I/O o EOF durante la comunicazione |
 
 ---
 

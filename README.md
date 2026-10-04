@@ -28,12 +28,12 @@ Nel progetto tale algoritmo e' integrato in una architettura modulare che distin
 
 Il progetto e' organizzato in quattro moduli principali:
 
-| Modulo     | Ruolo                                                                                                 | Tecnologie principali |
-| ---------- | ----------------------------------------------------------------------------------------------------- | --------------------- |
-| `qtServer` | backend dell'algoritmo QT, gestione dataset, JDBC, server socket multi-client                         | Java, JDBC, socket    |
-| `qtGUI`    | applicazione desktop per eseguire clustering in locale, visualizzare risultati ed esportare artefatti | JavaFX, Maven, XChart |
-| `qtClient` | client testuale che dialoga con `qtServer` tramite TCP                                                | Java                  |
-| `qtExt`    | test, benchmark e utility di supporto                                                                 | Java                  |
+| Modulo | Ruolo | Tecnologie principali |
+| --- | --- | --- |
+| `qtServer` | backend dell'algoritmo QT, gestione dataset, JDBC, server socket multi-client | Java, JDBC, socket |
+| `qtGUI` | applicazione desktop per eseguire clustering in locale, visualizzare risultati ed esportare artefatti | JavaFX, Maven, XChart |
+| `qtClient` | client testuale che dialoga con `qtServer` tramite TCP | Java |
+| `qtExt` | test, benchmark e utility di supporto | Java |
 
 ### Osservazione architetturale
 

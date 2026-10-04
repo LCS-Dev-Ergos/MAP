@@ -35,12 +35,12 @@ questo nucleo.
 
 Dal punto di vista funzionale il modulo copre quattro esigenze fondamentali:
 
-| Ambito                  | Descrizione                                                   |
-| ----------------------- | ------------------------------------------------------------- |
-| Modellazione dati       | Rappresentazione di attributi, tuple e insiemi di esempi      |
-| Clustering              | Esecuzione dell'algoritmo QT e gestione dei cluster prodotti  |
-| Accesso ai dati esterni | Import da database relazionale tramite JDBC                   |
-| Modalita' remota        | Esposizione del backend attraverso un server TCP multi-client |
+| Ambito | Descrizione |
+| --- | --- |
+| Modellazione dati | Rappresentazione di attributi, tuple e insiemi di esempi |
+| Clustering | Esecuzione dell'algoritmo QT e gestione dei cluster prodotti |
+| Accesso ai dati esterni | Import da database relazionale tramite JDBC |
+| Modalita' remota | Esposizione del backend attraverso un server TCP multi-client |
 
 ### Ruolo nel progetto
 
@@ -99,12 +99,12 @@ precisa e relativamente stabile.
 
 ### Visione sintetica
 
-| Package    | Compito                                                  |
-| ---------- | -------------------------------------------------------- |
-| `data`     | Modellazione degli attributi e dei dataset               |
-| `database` | Adattamento del modello relazionale al modello interno   |
-| `mining`   | Algoritmo QT, cluster, cache delle distanze, persistenza |
-| `server`   | Ascolto socket, gestione client e protocollo applicativo |
+| Package | Compito |
+| --- | --- |
+| `data` | Modellazione degli attributi e dei dataset |
+| `database` | Adattamento del modello relazionale al modello interno |
+| `mining` | Algoritmo QT, cluster, cache delle distanze, persistenza |
+| `server` | Ascolto socket, gestione client e protocollo applicativo |
 
 ---
 
@@ -117,17 +117,17 @@ Qui vengono introdotte le nozioni di attributo, item, tupla e dataset.
 
 ### Classi principali
 
-| Classe                                                | Ruolo                                          |
-| ----------------------------------------------------- | ---------------------------------------------- |
-| `Attribute`                                           | Classe base per gli attributi                  |
-| `DiscreteAttribute`                                   | Attributi categorici                           |
-| `ContinuousAttribute`                                 | Attributi numerici con normalizzazione min-max |
-| `Item`                                                | Associazione tra attributo e valore            |
-| `DiscreteItem`                                        | Item con distanza discreta                     |
-| `ContinuousItem`                                      | Item con distanza numerica normalizzata        |
-| `Tuple`                                               | Sequenza ordinata di item                      |
-| `Data`                                                | Contenitore dell'intero dataset                |
-| `EmptyDatasetException`, `InvalidDataFormatException` | Eccezioni specifiche del package               |
+| Classe | Ruolo |
+| --- | --- |
+| `Attribute` | Classe base per gli attributi |
+| `DiscreteAttribute` | Attributi categorici |
+| `ContinuousAttribute` | Attributi numerici con normalizzazione min-max |
+| `Item` | Associazione tra attributo e valore |
+| `DiscreteItem` | Item con distanza discreta |
+| `ContinuousItem` | Item con distanza numerica normalizzata |
+| `Tuple` | Sequenza ordinata di item |
+| `Data` | Contenitore dell'intero dataset |
+| `EmptyDatasetException`, `InvalidDataFormatException` | Eccezioni specifiche del package |
 
 ### Caricamento dei dati
 
@@ -164,13 +164,13 @@ modello interno del package `data`.
 
 ### Classi principali
 
-| Classe               | Ruolo                                        |
-| -------------------- | -------------------------------------------- |
-| `DbAccess`           | Gestione della connessione JDBC              |
-| `TableSchema`        | Lettura dei metadati della tabella           |
-| `TableData`          | Estrazione delle righe e dei valori distinti |
-| `Example`            | Rappresentazione di una riga del database    |
-| `QUERY_TYPE`         | Selezione del tipo di aggregazione           |
+| Classe | Ruolo |
+| --- | --- |
+| `DbAccess` | Gestione della connessione JDBC |
+| `TableSchema` | Lettura dei metadati della tabella |
+| `TableData` | Estrazione delle righe e dei valori distinti |
+| `Example` | Rappresentazione di una riga del database |
+| `QUERY_TYPE` | Selezione del tipo di aggregazione |
 | `Eccezioni dedicate` | Gestione dei casi anomali in fase di accesso |
 
 ### Aspetti rilevanti
@@ -208,14 +208,14 @@ costruzione, memorizzazione e serializzazione dei cluster.
 
 ### Classi principali
 
-| Classe                       | Ruolo                                                  |
-| ---------------------------- | ------------------------------------------------------ |
-| `QTMiner`                    | Classe principale dell'algoritmo                       |
-| `Cluster`                    | Singolo cluster con centroide e tuple associate        |
-| `ClusterSet`                 | Insieme dei cluster prodotti                           |
-| `DistanceCache`              | Cache sparsa delle distanze tra tuple                  |
+| Classe | Ruolo |
+| --- | --- |
+| `QTMiner` | Classe principale dell'algoritmo |
+| `Cluster` | Singolo cluster con centroide e tuple associate |
+| `ClusterSet` | Insieme dei cluster prodotti |
+| `DistanceCache` | Cache sparsa delle distanze tra tuple |
 | `SerializableClusteringData` | Contenitore serializzabile di cluster, dati e `radius` |
-| `Eccezioni dedicate`         | Gestione di casi anomali nel processo di mining        |
+| `Eccezioni dedicate` | Gestione di casi anomali nel processo di mining |
 
 ### `QTMiner`
 
@@ -264,10 +264,10 @@ client testuale.
 
 ### Classi principali
 
-| Classe            | Ruolo                                                |
-| ----------------- | ---------------------------------------------------- |
-| `MultiServer`     | Server principale in ascolto sulla porta configurata |
-| `ServerOneClient` | Thread dedicato a una singola connessione            |
+| Classe | Ruolo |
+| --- | --- |
+| `MultiServer` | Server principale in ascolto sulla porta configurata |
+| `ServerOneClient` | Thread dedicato a una singola connessione |
 
 ### Modello di concorrenza
 
@@ -338,12 +338,12 @@ Data originalData = miner.getData();
 
 ### Comandi gestiti da `ServerOneClient`
 
-| Codice | Operazione                            | Parametri attesi | Risposta                                        |
-| ------ | ------------------------------------- | ---------------- | ----------------------------------------------- |
-| `0`    | Caricamento tabella da database       | nome tabella     | `OK` oppure messaggio d'errore                  |
-| `1`    | Clustering sulla tabella corrente     | `radius`         | `OK`, numero cluster, rappresentazione testuale |
-| `2`    | Salvataggio del clustering corrente   | nessuno          | `OK` oppure messaggio d'errore                  |
-| `3`    | Caricamento clustering da file `.dmp` | nome file        | `OK` oppure messaggio d'errore                  |
+| Codice | Operazione | Parametri attesi | Risposta |
+| --- | --- | --- | --- |
+| `0` | Caricamento tabella da database | nome tabella | `OK` oppure messaggio d'errore |
+| `1` | Clustering sulla tabella corrente | `radius` | `OK`, numero cluster, rappresentazione testuale |
+| `2` | Salvataggio del clustering corrente | nessuno | `OK` oppure messaggio d'errore |
+| `3` | Caricamento clustering da file `.dmp` | nome file | `OK` oppure messaggio d'errore |
 
 ### Sequenza tipica
 
@@ -386,9 +386,9 @@ altri moduli per compilarsi, ma costituisce esso stesso la base degli altri comp
 
 ### Dipendenze esterne
 
-| Dipendenza        | Ruolo                                 |
-| ----------------- | ------------------------------------- |
-| JDK               | Compilazione ed esecuzione del modulo |
+| Dipendenza | Ruolo |
+| --- | --- |
+| JDK | Compilazione ed esecuzione del modulo |
 | MySQL Connector/J | Accesso JDBC alle tabelle relazionali |
 
 Il driver JDBC e' atteso in `qtServer/JDBC/mysql-connector-java-9.5.0.jar`, come
@@ -431,10 +431,10 @@ make run-jar PORT=8080
 
 ### Artefatti rilevanti
 
-| Artefatto                                      | Significato                      |
-| ---------------------------------------------- | -------------------------------- |
-| `qtServer/bin`                                 | Classi compilate del backend     |
-| `qtServer.jar`                                 | JAR eseguibile del modulo        |
+| Artefatto | Significato |
+| --- | --- |
+| `qtServer/bin` | Classi compilate del backend |
+| `qtServer.jar` | JAR eseguibile del modulo |
 | `qtServer/JDBC/mysql-connector-java-9.5.0.jar` | Driver richiesto dai target Make |
 
 ---
